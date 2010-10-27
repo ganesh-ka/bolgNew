@@ -1,0 +1,13 @@
+<h1>Posts index page</h1>
+
+<% for post in @posts  %>
+<b><%= post.name %> <div /></b>
+<%= post.title %>&nbsp;||&nbsp;
+<%= post.content %>&nbsp;||&nbsp;	<p /><h6><%= link_to 'Show',post %>&nbsp;
+<%= link_to 'Update',edit_post_path(post) %>&nbsp;
+<%= link_to 'Remove',post,:method => :delete %>&nbsp;
+
+</h6>
+<br /><% end %>
+
+<%= link_to 'new',new_post_path %>

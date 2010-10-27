@@ -1,0 +1,12 @@
+<center><h1>Editing post </h1></center>
+<% form_for @post do |g|%>
+<%= g.label :Name %><br/>
+<%= g.text_field :name %><br/>
+<%= g.label :Title %><br/>
+<%= g.text_field :title %><br/>
+<%= g.label :Content %><br/>
+<%= g.text_area :content%><br/>
+<%= g.submit%>
+<% end%>
+
+

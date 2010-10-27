@@ -1,0 +1,25 @@
+<center><h1>this is <%= @posts.name %> Post </center>
+<br/>
+<h3><%=@posts.name%></h3>
+<h3><%=@posts.title%></h3>
+<p><%=@posts.content%></p>
+<h3>Add a comment:</h3>
+<%= form_for([@posts, @posts.comments.build]) do |g| %>
+
+ 
+  <div class="field">
+    <%= g.label :commenter %><br />
+    <%= g.text_field :name %>
+</div>
+  <div class="field">
+    <%= g.label :body %><br />
+    <%= g.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= g.submit %>
+  </div>
+<% end %>
+ 
+<%= link_to 'Edit Post', edit_post_path(@post) %> |
+<%= link_to 'Back to Posts', posts_path %> |
+<%= link_to 'back',posts_path %>
