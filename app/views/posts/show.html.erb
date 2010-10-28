@@ -1,14 +1,23 @@
-<center><h1>this is <%= @posts.name %> Post </center>
+<center><h1>This is <%= @posts.name %> Post </center>
 <br/>
-<h3><%=@posts.name%></h3>
-<h3><%=@posts.title%></h3>
+<h3>Authour:	<%=@posts.name%></h3>
+<h3>Title:	<%=@posts.title%></h3>
+<h3><b>Post:</b></h3>
 <p><%=@posts.content%></p>
-<h3>Add a comment:</h3>
-<%= form_for([@posts, @posts.comments.build]) do |g| %>
+<hr>
+<h3>Comments for post of <%=@posts.name%>: </h3>
 
- 
+<%@posts.comments.each do |cmt| %>
+<p>Name:   <%=cmt.name%> </P>
+<p>Comment:<%=cmt.body%> </P>
+<%= link_to 'Edit', edit_post_comment_path(cmt.post,cmt) %>&nbsp;&nbsp;
+<%= link_to 'Delete', post_comment_path(cmt.post,cmt),:method => :delete %>
+<% end %>
+<hr/>
+<h3>Add a comment:</h3>
+<%= form_for([@posts, @posts.comments.build]) do |g| %> 
   <div class="field">
-    <%= g.label :commenter %><br />
+    <%= g.label :Name %><br />
     <%= g.text_field :name %>
 </div>
   <div class="field">
@@ -23,3 +32,4 @@
 <%= link_to 'Edit Post', edit_post_path(@post) %> |
 <%= link_to 'Back to Posts', posts_path %> |
 <%= link_to 'back',posts_path %>
+
