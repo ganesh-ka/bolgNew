@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
-	def create
+       
+       before_filter :authenticate, :only => :destroy
+       
+       def create
+	      @post = Post.find(params[:post_id])
+	      # snipped for brevity	
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.create(params[:comment])
 		redirect_to post_path(@post)
@@ -7,12 +12,12 @@ class CommentsController < ApplicationController
   
 	def edit
 		@post = Post.find(params[:post_id])
-		@comment = @post.comments(params[:id])
+		@comment = @post.comments.find(params[:id])
 	end
 	
 	def update
 		@post=Post.find(params[:post_id])
-		@comment = @post.comments(params[:id])
+		@comment = @post.comments.find(params[:id])
 		if @comment.update_attributes(params[:comment])
 		     flash[:notice] = "Post updated successfully"
 		     redirect_to @post
@@ -20,7 +25,7 @@ class CommentsController < ApplicationController
 	end
 	def destroy
 	       @post=Post.find(params[:post_id])
-		@comment = @post.comments(params[:id])
+		@comment = @post.comments.find(params[:id])
 		@comment.destroy
 		redirect_to post_path(@post)
 	end
