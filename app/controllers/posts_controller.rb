@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-       before_filter :authenticate, :except => [:index, :show]   
-        def edit
+before_filter :authenticate_user!#,# :except => [:index, :show]
+  def edit
 		@post = Post.find(params[:id])
 	end
 		
@@ -38,5 +38,6 @@ class PostsController < ApplicationController
 
 	def show
 	    @posts = Post.find(params[:id])
+      @user = User.find(params[:id])
 	end
 end

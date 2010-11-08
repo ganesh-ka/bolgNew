@@ -1,7 +1,7 @@
 BlogNew::Application.routes.draw do
   
-       devise_for :users
-       resources :users, :only => :show 
+       #devise_for :users
+       #resources :users, :only => :show do
        resources :posts do
        resources :comments
        end

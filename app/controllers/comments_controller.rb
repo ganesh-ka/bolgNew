@@ -1,5 +1,4 @@
-class CommentsController < ApplicationController
-       
+class CommentsController < ApplicationController       
        before_filter :authenticate, :only => :destroy
        
        def create

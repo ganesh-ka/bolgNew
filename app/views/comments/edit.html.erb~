@@ -1,5 +1,5 @@
 <center><h1>Editing Comment </h1></center>
-<% form_for (@post,@comment) do |g|%>
+<% form_for ([@post,@comment]) do |g|%>
 <%= g.label :Name %><br/>
 <%= g.text_field :name %><br/>
 <%= g.label :Content %><br/>

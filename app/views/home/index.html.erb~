@@ -1,0 +1,9 @@
+<center><h1>Home page</h1></center>
+
+
+<p>This it the homepage</p>
+
+<!--< #render "devise/menu/registration_items">
+<# render "devise/menu/login_items">-->
+
+<%=link_to 'cilck here to view all posts from here!..',posts_path%>
